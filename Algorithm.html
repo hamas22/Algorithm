@@ -1,4 +1,9 @@
- BUBBLE_SORT(A, size)
+
+
+# First implementation #
+
+
+BUBBLE_SORT(A, size)
     FOR i ← 0 TO size - 1 DO
         FOR j ← 0 TO size - i - 1 DO
             IF A[j] < A[j + 1] THEN
@@ -16,4 +21,75 @@
         RETURN -1
     END IF
 END FUNCTION
+
+
+                    
+# second implementation #
+                     
+MERGE(A, left, mid, right)
+
+  n₁ ← mid- left + 1
+  n₂ ← right - mid
+
+ Create arrays L[0 to n₁ ] and R[0 to n₂ ]
+
+  FOR i ← 0 TO n₁
+     L[i] ← A[left + i]
+    END FOR
+
+  FOR j ← 0 TO n₂
+      R[j] ← A[mid + 1 + j]
+    END FOR
+    
+    K ← left
+
+    while i < n1 and j < n2 do 
+    if L[i] ≥ R[j] then
+        A[k] ← L[i]
+        i ← i + 1
+    else
+        A[k] ← R[j]
+        j ← j + 1
+    end if
+    k ← k + 1
+end while
+
+
+while i < n1 do
+    A[k] ← L[i]
+    i ← i + 1
+    k ← k + 1
+end while
+
+while j < n2 do
+    A[k] ← R[j]
+    j ← j + 1
+    k ← k + 1
+end while
+
+
+ MERGE_SORT(A, left, right)
+    IF left < right THEN
+        mid ← left + (right - left) / 2
+        MERGE_SORT(A, left, mid)
+        MERGE_SORT(A, mid + 1, right)
+        MERGE(A, left, mid, right)
+    END IF
+
+ MAX_PRODUCT(A, size)
+    IF size ≥ 3 THEN
+        MERGE_SORT(A, 0, size - 1)
+        RETURN A[0] × A[1] × A[2]
+    ELSE
+        RETURN -1
+    END IF
+
+
+
+
+
+
+
+
+
 
