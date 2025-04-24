@@ -1,0 +1,19 @@
+ BUBBLE_SORT(A, size)
+    FOR i ← 0 TO size - 1 DO
+        FOR j ← 0 TO size - i - 1 DO
+            IF A[j] < A[j + 1] THEN
+                SWAP A[j] WITH A[j + 1]
+            END IF
+        END FOR
+    END FOR
+
+
+ MAX_PRODUCT(A, size)
+    IF size ≥ 3 THEN
+         BUBBLE_SORT(A, size)
+        RETURN A[0] × A[1] × A[2]
+    ELSE
+        RETURN -1
+    END IF
+END FUNCTION
+
